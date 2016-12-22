@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project ASFileTransferServer" basedir="." >
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+	
+	<property name="destFile" value="distr/ASFileTransferServer.jar" />
+	
+    <target name="create_run_jar">
+    	
+        <delete file="${destFile}" failonerror="false" />
+    	
+    	<jar destfile="${destFile}">
+            <manifest>
+            	<attribute name="Main-Class" value="ru.aselit.AppRun"/>
+            	<attribute name="Class-Path" value="./ lib/log4j-api-2.7.jar lib/log4j-core-2.7.jar"/>
+            	<attribute name="Implementation-Version" value="1.0"/>
+            </manifest>
+            <fileset dir="bin" includes="**/*.class" />
+    		<fileset dir="bin" includes="log4j2.xml" />
+    		
+        	<zipfileset dir="..\apache-log4j-2.7-bin" includes="log4j-api-2.7.jar" prefix="lib" />
+        	<zipfileset dir="..\apache-log4j-2.7-bin" includes="log4j-core-2.7.jar" prefix="lib" />
+    	</jar>
+    </target>
+</project>
